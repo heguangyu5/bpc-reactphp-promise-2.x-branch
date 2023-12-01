@@ -9,8 +9,7 @@ trait PromiseSettledTestTrait
      */
     abstract public function getPromiseTestAdapter(callable $canceller = null);
 
-    /** @test */
-    public function thenShouldReturnAPromiseForSettledPromise()
+    public function testThenShouldReturnAPromiseForSettledPromise()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -18,8 +17,7 @@ trait PromiseSettledTestTrait
         $this->assertInstanceOf('React\\Promise\\PromiseInterface', $adapter->promise()->then());
     }
 
-    /** @test */
-    public function thenShouldReturnAllowNullForSettledPromise()
+    public function testThenShouldReturnAllowNullForSettledPromise()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -27,8 +25,7 @@ trait PromiseSettledTestTrait
         $this->assertInstanceOf('React\\Promise\\PromiseInterface', $adapter->promise()->then(null, null, null));
     }
 
-    /** @test */
-    public function cancelShouldReturnNullForSettledPromise()
+    public function testCancelShouldReturnNullForSettledPromise()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -37,8 +34,7 @@ trait PromiseSettledTestTrait
         $this->assertNull($adapter->promise()->cancel());
     }
 
-    /** @test */
-    public function cancelShouldHaveNoEffectForSettledPromise()
+    public function testCancelShouldHaveNoEffectForSettledPromise()
     {
         $adapter = $this->getPromiseTestAdapter($this->expectCallableNever());
 
@@ -47,8 +43,7 @@ trait PromiseSettledTestTrait
         $adapter->promise()->cancel();
     }
 
-    /** @test */
-    public function doneShouldReturnNullForSettledPromise()
+    public function testDoneShouldReturnNullForSettledPromise()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -56,8 +51,7 @@ trait PromiseSettledTestTrait
         $this->assertNull($adapter->promise()->done(null, function () {}));
     }
 
-    /** @test */
-    public function doneShouldReturnAllowNullForSettledPromise()
+    public function testDoneShouldReturnAllowNullForSettledPromise()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -65,8 +59,7 @@ trait PromiseSettledTestTrait
         $this->assertNull($adapter->promise()->done(null, function () {}, null));
     }
 
-    /** @test */
-    public function progressShouldNotInvokeProgressHandlerForSettledPromise()
+    public function testProgressShouldNotInvokeProgressHandlerForSettledPromise()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -75,8 +68,7 @@ trait PromiseSettledTestTrait
         $adapter->notify();
     }
 
-    /** @test */
-    public function alwaysShouldReturnAPromiseForSettledPromise()
+    public function testAlwaysShouldReturnAPromiseForSettledPromise()
     {
         $adapter = $this->getPromiseTestAdapter();
 

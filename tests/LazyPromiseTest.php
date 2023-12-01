@@ -27,8 +27,7 @@ class LazyPromiseTest extends TestCase
         ]);
     }
 
-    /** @test */
-    public function shouldNotCallFactoryIfThenIsNotInvoked()
+    public function testShouldNotCallFactoryIfThenIsNotInvoked()
     {
         $factory = $this->createCallableMock();
         $factory
@@ -38,8 +37,7 @@ class LazyPromiseTest extends TestCase
         new LazyPromise($factory);
     }
 
-    /** @test */
-    public function shouldCallFactoryIfThenIsInvoked()
+    public function testShouldCallFactoryIfThenIsInvoked()
     {
         $factory = $this->createCallableMock();
         $factory
@@ -50,8 +48,7 @@ class LazyPromiseTest extends TestCase
         $p->then();
     }
 
-    /** @test */
-    public function shouldReturnPromiseFromFactory()
+    public function testShouldReturnPromiseFromFactory()
     {
         $factory = $this->createCallableMock();
         $factory
@@ -70,8 +67,7 @@ class LazyPromiseTest extends TestCase
         $p->then($onFulfilled);
     }
 
-    /** @test */
-    public function shouldReturnPromiseIfFactoryReturnsNull()
+    public function testShouldReturnPromiseIfFactoryReturnsNull()
     {
         $factory = $this->createCallableMock();
         $factory
@@ -83,8 +79,7 @@ class LazyPromiseTest extends TestCase
         $this->assertInstanceOf('React\\Promise\\PromiseInterface', $p->then());
     }
 
-    /** @test */
-    public function shouldReturnRejectedPromiseIfFactoryThrowsException()
+    public function testShouldReturnRejectedPromiseIfFactoryThrowsException()
     {
         $exception = new \Exception();
 

@@ -6,8 +6,7 @@ use React\Promise\Exception\LengthException;
 
 class FunctionSomeTest extends TestCase
 {
-    /** @test */
-    public function shouldRejectWithLengthExceptionWithEmptyInputArray()
+    public function testShouldRejectWithLengthExceptionWithEmptyInputArray()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -26,8 +25,7 @@ class FunctionSomeTest extends TestCase
         )->then($this->expectCallableNever(), $mock);
     }
 
-    /** @test */
-    public function shouldRejectWithLengthExceptionWithInputArrayContainingNotEnoughItems()
+    public function testShouldRejectWithLengthExceptionWithInputArrayContainingNotEnoughItems()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -46,8 +44,7 @@ class FunctionSomeTest extends TestCase
         )->then($this->expectCallableNever(), $mock);
     }
 
-    /** @test */
-    public function shouldResolveToEmptyArrayWithNonArrayInput()
+    public function testShouldResolveToEmptyArrayWithNonArrayInput()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -61,8 +58,7 @@ class FunctionSomeTest extends TestCase
         )->then($mock);
     }
 
-    /** @test */
-    public function shouldResolveValuesArray()
+    public function testShouldResolveValuesArray()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -76,8 +72,7 @@ class FunctionSomeTest extends TestCase
         )->then($mock);
     }
 
-    /** @test */
-    public function shouldResolvePromisesArray()
+    public function testShouldResolvePromisesArray()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -91,8 +86,7 @@ class FunctionSomeTest extends TestCase
         )->then($mock);
     }
 
-    /** @test */
-    public function shouldResolveSparseArrayInput()
+    public function testShouldResolveSparseArrayInput()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -106,8 +100,7 @@ class FunctionSomeTest extends TestCase
         )->then($mock);
     }
 
-    /** @test */
-    public function shouldRejectIfAnyInputPromiseRejectsBeforeDesiredNumberOfInputsAreResolved()
+    public function testShouldRejectIfAnyInputPromiseRejectsBeforeDesiredNumberOfInputsAreResolved()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -121,8 +114,7 @@ class FunctionSomeTest extends TestCase
         )->then($this->expectCallableNever(), $mock);
     }
 
-    /** @test */
-    public function shouldAcceptAPromiseForAnArray()
+    public function testShouldAcceptAPromiseForAnArray()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -136,8 +128,7 @@ class FunctionSomeTest extends TestCase
         )->then($mock);
     }
 
-    /** @test */
-    public function shouldResolveWithEmptyArrayIfHowManyIsLessThanOne()
+    public function testShouldResolveWithEmptyArrayIfHowManyIsLessThanOne()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -151,8 +142,7 @@ class FunctionSomeTest extends TestCase
         )->then($mock);
     }
 
-    /** @test */
-    public function shouldResolveToEmptyArrayWhenInputPromiseDoesNotResolveToArray()
+    public function testShouldResolveToEmptyArrayWhenInputPromiseDoesNotResolveToArray()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -166,8 +156,7 @@ class FunctionSomeTest extends TestCase
         )->then($mock);
     }
 
-    /** @test */
-    public function shouldRejectWhenInputPromiseRejects()
+    public function testShouldRejectWhenInputPromiseRejects()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -181,8 +170,7 @@ class FunctionSomeTest extends TestCase
         )->then($this->expectCallableNever(), $mock);
     }
 
-    /** @test */
-    public function shouldCancelInputPromise()
+    public function testShouldCancelInputPromise()
     {
         $mock = $this
             ->getMockBuilder('React\Promise\CancellablePromiseInterface')
@@ -194,8 +182,7 @@ class FunctionSomeTest extends TestCase
         some($mock, 1)->cancel();
     }
 
-    /** @test */
-    public function shouldCancelInputArrayPromises()
+    public function testShouldCancelInputArrayPromises()
     {
         $mock1 = $this
             ->getMockBuilder('React\Promise\CancellablePromiseInterface')
@@ -214,8 +201,7 @@ class FunctionSomeTest extends TestCase
         some([$mock1, $mock2], 1)->cancel();
     }
 
-    /** @test */
-    public function shouldNotCancelOtherPendingInputArrayPromisesIfEnoughPromisesFulfill()
+    public function testShouldNotCancelOtherPendingInputArrayPromisesIfEnoughPromisesFulfill()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -235,8 +221,7 @@ class FunctionSomeTest extends TestCase
         some([$deferred->promise(), $mock2], 1);
     }
 
-    /** @test */
-    public function shouldNotCancelOtherPendingInputArrayPromisesIfEnoughPromisesReject()
+    public function testShouldNotCancelOtherPendingInputArrayPromisesIfEnoughPromisesReject()
     {
         $mock = $this->createCallableMock();
         $mock

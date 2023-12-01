@@ -9,8 +9,7 @@ trait PromiseFulfilledTestTrait
      */
     abstract public function getPromiseTestAdapter(callable $canceller = null);
 
-    /** @test */
-    public function fulfilledPromiseShouldBeImmutable()
+    public function testFulfilledPromiseShouldBeImmutable()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -30,8 +29,7 @@ trait PromiseFulfilledTestTrait
             );
     }
 
-    /** @test */
-    public function fulfilledPromiseShouldInvokeNewlyAddedCallback()
+    public function testFulfilledPromiseShouldInvokeNewlyAddedCallback()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -47,8 +45,7 @@ trait PromiseFulfilledTestTrait
             ->then($mock, $this->expectCallableNever());
     }
 
-    /** @test */
-    public function thenShouldForwardResultWhenCallbackIsNull()
+    public function testThenShouldForwardResultWhenCallbackIsNull()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -70,8 +67,7 @@ trait PromiseFulfilledTestTrait
             );
     }
 
-    /** @test */
-    public function thenShouldForwardCallbackResultToNextCallback()
+    public function testThenShouldForwardCallbackResultToNextCallback()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -95,8 +91,7 @@ trait PromiseFulfilledTestTrait
             );
     }
 
-    /** @test */
-    public function thenShouldForwardPromisedCallbackResultValueToNextCallback()
+    public function testThenShouldForwardPromisedCallbackResultValueToNextCallback()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -120,8 +115,7 @@ trait PromiseFulfilledTestTrait
             );
     }
 
-    /** @test */
-    public function thenShouldSwitchFromCallbacksToErrbacksWhenCallbackReturnsARejection()
+    public function testThenShouldSwitchFromCallbacksToErrbacksWhenCallbackReturnsARejection()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -145,8 +139,7 @@ trait PromiseFulfilledTestTrait
             );
     }
 
-    /** @test */
-    public function thenShouldSwitchFromCallbacksToErrbacksWhenCallbackThrows()
+    public function testThenShouldSwitchFromCallbacksToErrbacksWhenCallbackThrows()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -176,8 +169,7 @@ trait PromiseFulfilledTestTrait
             );
     }
 
-    /** @test */
-    public function cancelShouldReturnNullForFulfilledPromise()
+    public function testCancelShouldReturnNullForFulfilledPromise()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -186,8 +178,7 @@ trait PromiseFulfilledTestTrait
         $this->assertNull($adapter->promise()->cancel());
     }
 
-    /** @test */
-    public function cancelShouldHaveNoEffectForFulfilledPromise()
+    public function testCancelShouldHaveNoEffectForFulfilledPromise()
     {
         $adapter = $this->getPromiseTestAdapter($this->expectCallableNever());
 
@@ -196,8 +187,7 @@ trait PromiseFulfilledTestTrait
         $adapter->promise()->cancel();
     }
 
-    /** @test */
-    public function doneShouldInvokeFulfillmentHandlerForFulfilledPromise()
+    public function testDoneShouldInvokeFulfillmentHandlerForFulfilledPromise()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -211,8 +201,7 @@ trait PromiseFulfilledTestTrait
         $this->assertNull($adapter->promise()->done($mock));
     }
 
-    /** @test */
-    public function doneShouldThrowExceptionThrownFulfillmentHandlerForFulfilledPromise()
+    public function testDoneShouldThrowExceptionThrownFulfillmentHandlerForFulfilledPromise()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -224,8 +213,7 @@ trait PromiseFulfilledTestTrait
         }));
     }
 
-    /** @test */
-    public function doneShouldThrowUnhandledRejectionExceptionWhenFulfillmentHandlerRejectsForFulfilledPromise()
+    public function testDoneShouldThrowUnhandledRejectionExceptionWhenFulfillmentHandlerRejectsForFulfilledPromise()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -237,8 +225,7 @@ trait PromiseFulfilledTestTrait
         }));
     }
 
-    /** @test */
-    public function otherwiseShouldNotInvokeRejectionHandlerForFulfilledPromise()
+    public function testOtherwiseShouldNotInvokeRejectionHandlerForFulfilledPromise()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -246,8 +233,7 @@ trait PromiseFulfilledTestTrait
         $adapter->promise()->otherwise($this->expectCallableNever());
     }
 
-    /** @test */
-    public function alwaysShouldNotSuppressValueForFulfilledPromise()
+    public function testAlwaysShouldNotSuppressValueForFulfilledPromise()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -265,8 +251,7 @@ trait PromiseFulfilledTestTrait
             ->then($mock);
     }
 
-    /** @test */
-    public function alwaysShouldNotSuppressValueWhenHandlerReturnsANonPromiseForFulfilledPromise()
+    public function testAlwaysShouldNotSuppressValueWhenHandlerReturnsANonPromiseForFulfilledPromise()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -286,8 +271,7 @@ trait PromiseFulfilledTestTrait
             ->then($mock);
     }
 
-    /** @test */
-    public function alwaysShouldNotSuppressValueWhenHandlerReturnsAPromiseForFulfilledPromise()
+    public function testAlwaysShouldNotSuppressValueWhenHandlerReturnsAPromiseForFulfilledPromise()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -307,8 +291,7 @@ trait PromiseFulfilledTestTrait
             ->then($mock);
     }
 
-    /** @test */
-    public function alwaysShouldRejectWhenHandlerThrowsForFulfilledPromise()
+    public function testAlwaysShouldRejectWhenHandlerThrowsForFulfilledPromise()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -328,8 +311,7 @@ trait PromiseFulfilledTestTrait
             ->then(null, $mock);
     }
 
-    /** @test */
-    public function alwaysShouldRejectWhenHandlerRejectsForFulfilledPromise()
+    public function testAlwaysShouldRejectWhenHandlerRejectsForFulfilledPromise()
     {
         $adapter = $this->getPromiseTestAdapter();
 

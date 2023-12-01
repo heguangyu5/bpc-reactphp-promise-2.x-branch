@@ -4,8 +4,7 @@ namespace React\Promise;
 
 class FunctionAllTest extends TestCase
 {
-    /** @test */
-    public function shouldResolveEmptyInput()
+    public function testShouldResolveEmptyInput()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -17,8 +16,7 @@ class FunctionAllTest extends TestCase
             ->then($mock);
     }
 
-    /** @test */
-    public function shouldResolveValuesArray()
+    public function testShouldResolveValuesArray()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -30,8 +28,7 @@ class FunctionAllTest extends TestCase
             ->then($mock);
     }
 
-    /** @test */
-    public function shouldResolvePromisesArray()
+    public function testShouldResolvePromisesArray()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -43,8 +40,7 @@ class FunctionAllTest extends TestCase
             ->then($mock);
     }
 
-    /** @test */
-    public function shouldResolveSparseArrayInput()
+    public function testShouldResolveSparseArrayInput()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -56,8 +52,7 @@ class FunctionAllTest extends TestCase
             ->then($mock);
     }
 
-    /** @test */
-    public function shouldRejectIfAnyInputPromiseRejects()
+    public function testShouldRejectIfAnyInputPromiseRejects()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -69,8 +64,7 @@ class FunctionAllTest extends TestCase
             ->then($this->expectCallableNever(), $mock);
     }
 
-    /** @test */
-    public function shouldAcceptAPromiseForAnArray()
+    public function testShouldAcceptAPromiseForAnArray()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -82,8 +76,7 @@ class FunctionAllTest extends TestCase
             ->then($mock);
     }
 
-    /** @test */
-    public function shouldResolveToEmptyArrayWhenInputPromiseDoesNotResolveToArray()
+    public function testShouldResolveToEmptyArrayWhenInputPromiseDoesNotResolveToArray()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -95,8 +88,7 @@ class FunctionAllTest extends TestCase
             ->then($mock);
     }
 
-    /** @test */
-    public function shouldPreserveTheOrderOfArrayWhenResolvingAsyncPromises()
+    public function testShouldPreserveTheOrderOfArrayWhenResolvingAsyncPromises()
     {
         $mock = $this->createCallableMock();
         $mock

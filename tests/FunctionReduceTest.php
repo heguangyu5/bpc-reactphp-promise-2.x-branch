@@ -18,8 +18,7 @@ class FunctionReduceTest extends TestCase
         };
     }
 
-    /** @test */
-    public function shouldReduceValuesWithoutInitialValue()
+    public function testShouldReduceValuesWithoutInitialValue()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -33,8 +32,7 @@ class FunctionReduceTest extends TestCase
         )->then($mock);
     }
 
-    /** @test */
-    public function shouldReduceValuesWithInitialValue()
+    public function testShouldReduceValuesWithInitialValue()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -49,8 +47,7 @@ class FunctionReduceTest extends TestCase
         )->then($mock);
     }
 
-    /** @test */
-    public function shouldReduceValuesWithInitialPromise()
+    public function testShouldReduceValuesWithInitialPromise()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -65,8 +62,7 @@ class FunctionReduceTest extends TestCase
         )->then($mock);
     }
 
-    /** @test */
-    public function shouldReducePromisedValuesWithoutInitialValue()
+    public function testShouldReducePromisedValuesWithoutInitialValue()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -80,8 +76,7 @@ class FunctionReduceTest extends TestCase
         )->then($mock);
     }
 
-    /** @test */
-    public function shouldReducePromisedValuesWithInitialValue()
+    public function testShouldReducePromisedValuesWithInitialValue()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -96,8 +91,7 @@ class FunctionReduceTest extends TestCase
         )->then($mock);
     }
 
-    /** @test */
-    public function shouldReducePromisedValuesWithInitialPromise()
+    public function testShouldReducePromisedValuesWithInitialPromise()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -112,8 +106,7 @@ class FunctionReduceTest extends TestCase
         )->then($mock);
     }
 
-    /** @test */
-    public function shouldReduceEmptyInputWithInitialValue()
+    public function testShouldReduceEmptyInputWithInitialValue()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -128,8 +121,7 @@ class FunctionReduceTest extends TestCase
         )->then($mock);
     }
 
-    /** @test */
-    public function shouldReduceEmptyInputWithInitialPromise()
+    public function testShouldReduceEmptyInputWithInitialPromise()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -144,8 +136,7 @@ class FunctionReduceTest extends TestCase
         )->then($mock);
     }
 
-    /** @test */
-    public function shouldRejectWhenInputContainsRejection()
+    public function testShouldRejectWhenInputContainsRejection()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -160,8 +151,7 @@ class FunctionReduceTest extends TestCase
         )->then($this->expectCallableNever(), $mock);
     }
 
-    /** @test */
-    public function shouldResolveWithNullWhenInputIsEmptyAndNoInitialValueOrPromiseProvided()
+    public function testShouldResolveWithNullWhenInputIsEmptyAndNoInitialValueOrPromiseProvided()
     {
         // Note: this is different from when.js's behavior!
         // In when.reduce(), this rejects with a TypeError exception (following
@@ -179,8 +169,7 @@ class FunctionReduceTest extends TestCase
         )->then($mock);
     }
 
-    /** @test */
-    public function shouldAllowSparseArrayInputWithoutInitialValue()
+    public function testShouldAllowSparseArrayInputWithoutInitialValue()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -194,8 +183,7 @@ class FunctionReduceTest extends TestCase
         )->then($mock);
     }
 
-    /** @test */
-    public function shouldAllowSparseArrayInputWithInitialValue()
+    public function testShouldAllowSparseArrayInputWithInitialValue()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -210,8 +198,7 @@ class FunctionReduceTest extends TestCase
         )->then($mock);
     }
 
-    /** @test */
-    public function shouldReduceInInputOrder()
+    public function testShouldReduceInInputOrder()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -226,8 +213,7 @@ class FunctionReduceTest extends TestCase
         )->then($mock);
     }
 
-    /** @test */
-    public function shouldAcceptAPromiseForAnArray()
+    public function testShouldAcceptAPromiseForAnArray()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -242,8 +228,7 @@ class FunctionReduceTest extends TestCase
         )->then($mock);
     }
 
-    /** @test */
-    public function shouldResolveToInitialValueWhenInputPromiseDoesNotResolveToAnArray()
+    public function testShouldResolveToInitialValueWhenInputPromiseDoesNotResolveToAnArray()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -258,8 +243,7 @@ class FunctionReduceTest extends TestCase
         )->then($mock);
     }
 
-    /** @test */
-    public function shouldProvideCorrectBasisValue()
+    public function testShouldProvideCorrectBasisValue()
     {
         $insertIntoArray = function ($arr, $val, $i) {
             $arr[$i] = $val;
@@ -288,8 +272,7 @@ class FunctionReduceTest extends TestCase
         $d2->resolve(2);
     }
 
-    /** @test */
-    public function shouldRejectWhenInputPromiseRejects()
+    public function testShouldRejectWhenInputPromiseRejects()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -304,8 +287,7 @@ class FunctionReduceTest extends TestCase
         )->then($this->expectCallableNever(), $mock);
     }
 
-    /** @test */
-    public function shouldCancelInputPromise()
+    public function testShouldCancelInputPromise()
     {
         $mock = $this
             ->getMockBuilder('React\Promise\CancellablePromiseInterface')
@@ -321,8 +303,7 @@ class FunctionReduceTest extends TestCase
         )->cancel();
     }
 
-    /** @test */
-    public function shouldCancelInputArrayPromises()
+    public function testShouldCancelInputArrayPromises()
     {
         $mock1 = $this
             ->getMockBuilder('React\Promise\CancellablePromiseInterface')

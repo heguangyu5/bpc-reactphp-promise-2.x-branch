@@ -40,16 +40,14 @@ class RejectedPromiseTest extends TestCase
         ]);
     }
 
-    /** @test */
-    public function shouldThrowExceptionIfConstructedWithAPromise()
+    public function testShouldThrowExceptionIfConstructedWithAPromise()
     {
         $this->setExpectedException('\InvalidArgumentException');
 
         return new RejectedPromise(new RejectedPromise());
     }
 
-    /** @test */
-    public function shouldNotLeaveGarbageCyclesWhenRemovingLastReferenceToRejectedPromiseWithAlwaysFollowers()
+    public function testShouldNotLeaveGarbageCyclesWhenRemovingLastReferenceToRejectedPromiseWithAlwaysFollowers()
     {
         gc_collect_cycles();
         $promise = new RejectedPromise(1);
@@ -61,8 +59,7 @@ class RejectedPromiseTest extends TestCase
         $this->assertSame(0, gc_collect_cycles());
     }
 
-    /** @test */
-    public function shouldNotLeaveGarbageCyclesWhenRemovingLastReferenceToRejectedPromiseWithThenFollowers()
+    public function testShouldNotLeaveGarbageCyclesWhenRemovingLastReferenceToRejectedPromiseWithThenFollowers()
     {
         gc_collect_cycles();
         $promise = new RejectedPromise(1);

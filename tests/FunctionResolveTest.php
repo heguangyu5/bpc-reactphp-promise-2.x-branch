@@ -4,8 +4,7 @@ namespace React\Promise;
 
 class FunctionResolveTest extends TestCase
 {
-    /** @test */
-    public function shouldResolveAnImmediateValue()
+    public function testShouldResolveAnImmediateValue()
     {
         $expected = 123;
 
@@ -22,8 +21,7 @@ class FunctionResolveTest extends TestCase
             );
     }
 
-    /** @test */
-    public function shouldResolveAFulfilledPromise()
+    public function testShouldResolveAFulfilledPromise()
     {
         $expected = 123;
 
@@ -42,8 +40,7 @@ class FunctionResolveTest extends TestCase
             );
     }
 
-    /** @test */
-    public function shouldResolveAThenable()
+    public function testShouldResolveAThenable()
     {
         $thenable = new SimpleFulfilledTestThenable();
 
@@ -60,8 +57,7 @@ class FunctionResolveTest extends TestCase
             );
     }
 
-    /** @test */
-    public function shouldResolveACancellableThenable()
+    public function testShouldResolveACancellableThenable()
     {
         $thenable = new SimpleTestCancellableThenable();
 
@@ -71,8 +67,7 @@ class FunctionResolveTest extends TestCase
         $this->assertTrue($thenable->cancelCalled);
     }
 
-    /** @test */
-    public function shouldRejectARejectedPromise()
+    public function testShouldRejectARejectedPromise()
     {
         $expected = 123;
 
@@ -91,8 +86,7 @@ class FunctionResolveTest extends TestCase
             );
     }
 
-    /** @test */
-    public function shouldSupportDeepNestingInPromiseChains()
+    public function testShouldSupportDeepNestingInPromiseChains()
     {
         $d = new Deferred();
         $d->resolve(false);
@@ -121,8 +115,7 @@ class FunctionResolveTest extends TestCase
         $result->then($mock);
     }
 
-    /** @test */
-    public function shouldSupportVeryDeepNestedPromises()
+    public function testShouldSupportVeryDeepNestedPromises()
     {
         $deferreds = [];
 
@@ -159,8 +152,7 @@ class FunctionResolveTest extends TestCase
         $deferreds[0]->promise()->then($mock);
     }
 
-    /** @test */
-    public function returnsExtendePromiseForSimplePromise()
+    public function testReturnsExtendePromiseForSimplePromise()
     {
         $promise = $this
             ->getMockBuilder('React\Promise\PromiseInterface')

@@ -11,8 +11,7 @@ trait ResolveTestTrait
      */
     abstract public function getPromiseTestAdapter(callable $canceller = null);
 
-    /** @test */
-    public function resolveShouldResolve()
+    public function testResolveShouldResolve()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -28,8 +27,7 @@ trait ResolveTestTrait
         $adapter->resolve(1);
     }
 
-    /** @test */
-    public function resolveShouldResolveWithPromisedValue()
+    public function testResolveShouldResolveWithPromisedValue()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -45,8 +43,7 @@ trait ResolveTestTrait
         $adapter->resolve(Promise\resolve(1));
     }
 
-    /** @test */
-    public function resolveShouldRejectWhenResolvedWithRejectedPromise()
+    public function testResolveShouldRejectWhenResolvedWithRejectedPromise()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -62,8 +59,7 @@ trait ResolveTestTrait
         $adapter->resolve(Promise\reject(1));
     }
 
-    /** @test */
-    public function resolveShouldForwardValueWhenCallbackIsNull()
+    public function testResolveShouldForwardValueWhenCallbackIsNull()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -86,8 +82,7 @@ trait ResolveTestTrait
         $adapter->resolve(1);
     }
 
-    /** @test */
-    public function resolveShouldMakePromiseImmutable()
+    public function testResolveShouldMakePromiseImmutable()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -112,10 +107,7 @@ trait ResolveTestTrait
         $adapter->resolve(2);
     }
 
-    /**
-     * @test
-     */
-    public function resolveShouldRejectWhenResolvedWithItself()
+    public function testResolveShouldRejectWhenResolvedWithItself()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -134,10 +126,7 @@ trait ResolveTestTrait
         $adapter->resolve($adapter->promise());
     }
 
-    /**
-     * @test
-     */
-    public function resolveShouldRejectWhenResolvedWithAPromiseWhichFollowsItself()
+    public function testResolveShouldRejectWhenResolvedWithAPromiseWhichFollowsItself()
     {
         $adapter1 = $this->getPromiseTestAdapter();
         $adapter2 = $this->getPromiseTestAdapter();
@@ -161,8 +150,7 @@ trait ResolveTestTrait
         $adapter2->resolve($promise1);
     }
 
-    /** @test */
-    public function doneShouldInvokeFulfillmentHandler()
+    public function testDoneShouldInvokeFulfillmentHandler()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -176,8 +164,7 @@ trait ResolveTestTrait
         $adapter->resolve(1);
     }
 
-    /** @test */
-    public function doneShouldThrowExceptionThrownFulfillmentHandler()
+    public function testDoneShouldThrowExceptionThrownFulfillmentHandler()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -189,8 +176,7 @@ trait ResolveTestTrait
         $adapter->resolve(1);
     }
 
-    /** @test */
-    public function doneShouldThrowUnhandledRejectionExceptionWhenFulfillmentHandlerRejects()
+    public function testDoneShouldThrowUnhandledRejectionExceptionWhenFulfillmentHandlerRejects()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -202,8 +188,7 @@ trait ResolveTestTrait
         $adapter->resolve(1);
     }
 
-    /** @test */
-    public function alwaysShouldNotSuppressValue()
+    public function testAlwaysShouldNotSuppressValue()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -222,8 +207,7 @@ trait ResolveTestTrait
         $adapter->resolve($value);
     }
 
-    /** @test */
-    public function alwaysShouldNotSuppressValueWhenHandlerReturnsANonPromise()
+    public function testAlwaysShouldNotSuppressValueWhenHandlerReturnsANonPromise()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -244,8 +228,7 @@ trait ResolveTestTrait
         $adapter->resolve($value);
     }
 
-    /** @test */
-    public function alwaysShouldNotSuppressValueWhenHandlerReturnsAPromise()
+    public function testAlwaysShouldNotSuppressValueWhenHandlerReturnsAPromise()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -266,8 +249,7 @@ trait ResolveTestTrait
         $adapter->resolve($value);
     }
 
-    /** @test */
-    public function alwaysShouldRejectWhenHandlerThrowsForFulfillment()
+    public function testAlwaysShouldRejectWhenHandlerThrowsForFulfillment()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -288,8 +270,7 @@ trait ResolveTestTrait
         $adapter->resolve(1);
     }
 
-    /** @test */
-    public function alwaysShouldRejectWhenHandlerRejectsForFulfillment()
+    public function testAlwaysShouldRejectWhenHandlerRejectsForFulfillment()
     {
         $adapter = $this->getPromiseTestAdapter();
 

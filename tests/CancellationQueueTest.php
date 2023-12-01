@@ -4,8 +4,7 @@ namespace React\Promise;
 
 class CancellationQueueTest extends TestCase
 {
-    /** @test */
-    public function acceptsSimpleCancellableThenable()
+    public function testAcceptsSimpleCancellableThenable()
     {
         $p = new SimpleTestCancellableThenable();
 
@@ -17,8 +16,7 @@ class CancellationQueueTest extends TestCase
         $this->assertTrue($p->cancelCalled);
     }
 
-    /** @test */
-    public function ignoresSimpleCancellable()
+    public function testIgnoresSimpleCancellable()
     {
         $p = new SimpleTestCancellable();
 
@@ -30,8 +28,7 @@ class CancellationQueueTest extends TestCase
         $this->assertFalse($p->cancelCalled);
     }
 
-    /** @test */
-    public function callsCancelOnPromisesEnqueuedBeforeStart()
+    public function testCallsCancelOnPromisesEnqueuedBeforeStart()
     {
         $d1 = $this->getCancellableDeferred();
         $d2 = $this->getCancellableDeferred();
@@ -43,8 +40,7 @@ class CancellationQueueTest extends TestCase
         $cancellationQueue();
     }
 
-    /** @test */
-    public function callsCancelOnPromisesEnqueuedAfterStart()
+    public function testCallsCancelOnPromisesEnqueuedAfterStart()
     {
         $d1 = $this->getCancellableDeferred();
         $d2 = $this->getCancellableDeferred();
@@ -57,8 +53,7 @@ class CancellationQueueTest extends TestCase
         $cancellationQueue->enqueue($d1->promise());
     }
 
-    /** @test */
-    public function doesNotCallCancelTwiceWhenStartedTwice()
+    public function testDoesNotCallCancelTwiceWhenStartedTwice()
     {
         $d = $this->getCancellableDeferred();
 
@@ -69,8 +64,7 @@ class CancellationQueueTest extends TestCase
         $cancellationQueue();
     }
 
-    /** @test */
-    public function rethrowsExceptionsThrownFromCancel()
+    public function testRethrowsExceptionsThrownFromCancel()
     {
         $this->setExpectedException('\Exception', 'test');
 

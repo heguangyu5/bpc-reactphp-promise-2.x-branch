@@ -9,8 +9,7 @@ trait NotifyTestTrait
      */
     abstract public function getPromiseTestAdapter(callable $canceller = null);
 
-    /** @test */
-    public function notifyShouldProgress()
+    public function testNotifyShouldProgress()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -28,8 +27,7 @@ trait NotifyTestTrait
         $adapter->notify($sentinel);
     }
 
-    /** @test */
-    public function notifyShouldPropagateProgressToDownstreamPromises()
+    public function testNotifyShouldPropagateProgressToDownstreamPromises()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -62,8 +60,7 @@ trait NotifyTestTrait
         $adapter->notify($sentinel);
     }
 
-    /** @test */
-    public function notifyShouldPropagateTransformedProgressToDownstreamPromises()
+    public function testNotifyShouldPropagateTransformedProgressToDownstreamPromises()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -96,8 +93,7 @@ trait NotifyTestTrait
         $adapter->notify(1);
     }
 
-    /** @test */
-    public function notifyShouldPropagateCaughtExceptionValueAsProgress()
+    public function testNotifyShouldPropagateCaughtExceptionValueAsProgress()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -130,8 +126,7 @@ trait NotifyTestTrait
         $adapter->notify(1);
     }
 
-    /** @test */
-    public function notifyShouldForwardProgressEventsWhenIntermediaryCallbackTiedToAResolvedPromiseReturnsAPromise()
+    public function testNotifyShouldForwardProgressEventsWhenIntermediaryCallbackTiedToAResolvedPromiseReturnsAPromise()
     {
         $adapter = $this->getPromiseTestAdapter();
         $adapter2 = $this->getPromiseTestAdapter();
@@ -162,8 +157,7 @@ trait NotifyTestTrait
         $adapter2->notify($sentinel);
     }
 
-    /** @test */
-    public function notifyShouldForwardProgressEventsWhenIntermediaryCallbackTiedToAnUnresolvedPromiseReturnsAPromise()
+    public function testNotifyShouldForwardProgressEventsWhenIntermediaryCallbackTiedToAnUnresolvedPromiseReturnsAPromise()
     {
         $adapter = $this->getPromiseTestAdapter();
         $adapter2 = $this->getPromiseTestAdapter();
@@ -193,8 +187,7 @@ trait NotifyTestTrait
         $adapter2->notify($sentinel);
     }
 
-    /** @test */
-    public function notifyShouldForwardProgressWhenResolvedWithAnotherPromise()
+    public function testNotifyShouldForwardProgressWhenResolvedWithAnotherPromise()
     {
         $adapter = $this->getPromiseTestAdapter();
         $adapter2 = $this->getPromiseTestAdapter();
@@ -229,8 +222,7 @@ trait NotifyTestTrait
         $adapter2->notify($sentinel);
     }
 
-    /** @test */
-    public function notifyShouldAllowResolveAfterProgress()
+    public function testNotifyShouldAllowResolveAfterProgress()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -251,8 +243,7 @@ trait NotifyTestTrait
         $adapter->resolve(2);
     }
 
-    /** @test */
-    public function notifyShouldAllowRejectAfterProgress()
+    public function testNotifyShouldAllowRejectAfterProgress()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -273,8 +264,7 @@ trait NotifyTestTrait
         $adapter->reject(2);
     }
 
-    /** @test */
-    public function notifyShouldReturnSilentlyOnProgressWhenAlreadyRejected()
+    public function testNotifyShouldReturnSilentlyOnProgressWhenAlreadyRejected()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -283,8 +273,7 @@ trait NotifyTestTrait
         $this->assertNull($adapter->notify());
     }
 
-    /** @test */
-    public function notifyShouldInvokeProgressHandler()
+    public function testNotifyShouldInvokeProgressHandler()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -298,8 +287,7 @@ trait NotifyTestTrait
         $adapter->notify(1);
     }
 
-    /** @test */
-    public function notifyShouldInvokeProgressHandlerFromDone()
+    public function testNotifyShouldInvokeProgressHandlerFromDone()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -313,8 +301,7 @@ trait NotifyTestTrait
         $adapter->notify(1);
     }
 
-    /** @test */
-    public function notifyShouldThrowExceptionThrownProgressHandlerFromDone()
+    public function testNotifyShouldThrowExceptionThrownProgressHandlerFromDone()
     {
         $adapter = $this->getPromiseTestAdapter();
 

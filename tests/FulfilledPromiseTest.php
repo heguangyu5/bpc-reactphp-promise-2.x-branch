@@ -40,16 +40,14 @@ class FulfilledPromiseTest extends TestCase
         ]);
     }
 
-    /** @test */
-    public function shouldThrowExceptionIfConstructedWithAPromise()
+    public function testShouldThrowExceptionIfConstructedWithAPromise()
     {
         $this->setExpectedException('\InvalidArgumentException');
 
         return new FulfilledPromise(new FulfilledPromise());
     }
 
-    /** @test */
-    public function shouldNotLeaveGarbageCyclesWhenRemovingLastReferenceToFulfilledPromiseWithAlwaysFollowers()
+    public function testShouldNotLeaveGarbageCyclesWhenRemovingLastReferenceToFulfilledPromiseWithAlwaysFollowers()
     {
         gc_collect_cycles();
         gc_collect_cycles(); // clear twice to avoid leftovers in PHP 7.4 with ext-xdebug and code coverage turned on
@@ -63,8 +61,7 @@ class FulfilledPromiseTest extends TestCase
         $this->assertSame(0, gc_collect_cycles());
     }
 
-    /** @test */
-    public function shouldNotLeaveGarbageCyclesWhenRemovingLastReferenceToFulfilledPromiseWithThenFollowers()
+    public function testShouldNotLeaveGarbageCyclesWhenRemovingLastReferenceToFulfilledPromiseWithThenFollowers()
     {
         gc_collect_cycles();
         $promise = new FulfilledPromise(1);

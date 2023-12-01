@@ -18,8 +18,7 @@ class FunctionMapTest extends TestCase
         };
     }
 
-    /** @test */
-    public function shouldMapInputValuesArray()
+    public function testShouldMapInputValuesArray()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -33,8 +32,7 @@ class FunctionMapTest extends TestCase
         )->then($mock);
     }
 
-    /** @test */
-    public function shouldMapInputPromisesArray()
+    public function testShouldMapInputPromisesArray()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -48,8 +46,7 @@ class FunctionMapTest extends TestCase
         )->then($mock);
     }
 
-    /** @test */
-    public function shouldMapMixedInputArray()
+    public function testShouldMapMixedInputArray()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -63,8 +60,7 @@ class FunctionMapTest extends TestCase
         )->then($mock);
     }
 
-    /** @test */
-    public function shouldMapInputWhenMapperReturnsAPromise()
+    public function testShouldMapInputWhenMapperReturnsAPromise()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -78,8 +74,7 @@ class FunctionMapTest extends TestCase
         )->then($mock);
     }
 
-    /** @test */
-    public function shouldAcceptAPromiseForAnArray()
+    public function testShouldAcceptAPromiseForAnArray()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -93,8 +88,7 @@ class FunctionMapTest extends TestCase
         )->then($mock);
     }
 
-    /** @test */
-    public function shouldResolveToEmptyArrayWhenInputPromiseDoesNotResolveToArray()
+    public function testShouldResolveToEmptyArrayWhenInputPromiseDoesNotResolveToArray()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -108,8 +102,7 @@ class FunctionMapTest extends TestCase
         )->then($mock);
     }
 
-    /** @test */
-    public function shouldPreserveTheOrderOfArrayWhenResolvingAsyncPromises()
+    public function testShouldPreserveTheOrderOfArrayWhenResolvingAsyncPromises()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -127,8 +120,7 @@ class FunctionMapTest extends TestCase
         $deferred->resolve(2);
     }
 
-    /** @test */
-    public function shouldRejectWhenInputContainsRejection()
+    public function testShouldRejectWhenInputContainsRejection()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -142,8 +134,7 @@ class FunctionMapTest extends TestCase
         )->then($this->expectCallableNever(), $mock);
     }
 
-    /** @test */
-    public function shouldRejectWhenInputPromiseRejects()
+    public function testShouldRejectWhenInputPromiseRejects()
     {
         $mock = $this->createCallableMock();
         $mock
@@ -157,8 +148,7 @@ class FunctionMapTest extends TestCase
         )->then($this->expectCallableNever(), $mock);
     }
 
-    /** @test */
-    public function shouldCancelInputPromise()
+    public function testShouldCancelInputPromise()
     {
         $mock = $this
             ->getMockBuilder('React\Promise\CancellablePromiseInterface')
@@ -173,8 +163,7 @@ class FunctionMapTest extends TestCase
         )->cancel();
     }
 
-    /** @test */
-    public function shouldCancelInputArrayPromises()
+    public function testShouldCancelInputArrayPromises()
     {
         $mock1 = $this
             ->getMockBuilder('React\Promise\CancellablePromiseInterface')

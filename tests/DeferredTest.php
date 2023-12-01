@@ -21,8 +21,7 @@ class DeferredTest extends TestCase
         ]);
     }
 
-    /** @test */
-    public function progressIsAnAliasForNotify()
+    public function testProgressIsAnAliasForNotify()
     {
         $deferred = new Deferred();
 
@@ -40,8 +39,7 @@ class DeferredTest extends TestCase
         $deferred->progress($sentinel);
     }
 
-    /** @test */
-    public function shouldRejectWithoutCreatingGarbageCyclesIfCancellerRejectsWithException()
+    public function testShouldRejectWithoutCreatingGarbageCyclesIfCancellerRejectsWithException()
     {
         gc_collect_cycles();
         gc_collect_cycles(); // clear twice to avoid leftovers in PHP 7.4 with ext-xdebug and code coverage turned on
@@ -55,8 +53,7 @@ class DeferredTest extends TestCase
         $this->assertSame(0, gc_collect_cycles());
     }
 
-    /** @test */
-    public function shouldRejectWithoutCreatingGarbageCyclesIfParentCancellerRejectsWithException()
+    public function testShouldRejectWithoutCreatingGarbageCyclesIfParentCancellerRejectsWithException()
     {
         gc_collect_cycles();
         gc_collect_cycles(); // clear twice to avoid leftovers in PHP 7.4 with ext-xdebug and code coverage turned on
@@ -70,8 +67,7 @@ class DeferredTest extends TestCase
         $this->assertSame(0, gc_collect_cycles());
     }
 
-    /** @test */
-    public function shouldRejectWithoutCreatingGarbageCyclesIfCancellerHoldsReferenceAndExplicitlyRejectWithException()
+    public function testShouldRejectWithoutCreatingGarbageCyclesIfCancellerHoldsReferenceAndExplicitlyRejectWithException()
     {
         gc_collect_cycles();
         $deferred = new Deferred(function () use (&$deferred) { });
@@ -81,8 +77,7 @@ class DeferredTest extends TestCase
         $this->assertSame(0, gc_collect_cycles());
     }
 
-    /** @test */
-    public function shouldNotLeaveGarbageCyclesWhenRemovingLastReferenceToPendingDeferred()
+    public function testShouldNotLeaveGarbageCyclesWhenRemovingLastReferenceToPendingDeferred()
     {
         gc_collect_cycles();
         $deferred = new Deferred();
@@ -92,8 +87,7 @@ class DeferredTest extends TestCase
         $this->assertSame(0, gc_collect_cycles());
     }
 
-    /** @test */
-    public function shouldNotLeaveGarbageCyclesWhenRemovingLastReferenceToPendingDeferredWithUnusedCanceller()
+    public function testShouldNotLeaveGarbageCyclesWhenRemovingLastReferenceToPendingDeferredWithUnusedCanceller()
     {
         gc_collect_cycles();
         $deferred = new Deferred(function () { });
@@ -103,8 +97,7 @@ class DeferredTest extends TestCase
         $this->assertSame(0, gc_collect_cycles());
     }
 
-    /** @test */
-    public function shouldNotLeaveGarbageCyclesWhenRemovingLastReferenceToPendingDeferredWithNoopCanceller()
+    public function testShouldNotLeaveGarbageCyclesWhenRemovingLastReferenceToPendingDeferredWithNoopCanceller()
     {
         gc_collect_cycles();
         $deferred = new Deferred(function () { });

@@ -12,8 +12,7 @@ trait RejectTestTrait
      */
     abstract public function getPromiseTestAdapter(callable $canceller = null);
 
-    /** @test */
-    public function rejectShouldRejectWithAnImmediateValue()
+    public function testRejectShouldRejectWithAnImmediateValue()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -29,8 +28,7 @@ trait RejectTestTrait
         $adapter->reject(1);
     }
 
-    /** @test */
-    public function rejectShouldRejectWithFulfilledPromise()
+    public function testRejectShouldRejectWithFulfilledPromise()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -46,8 +44,7 @@ trait RejectTestTrait
         $adapter->reject(Promise\resolve(1));
     }
 
-    /** @test */
-    public function rejectShouldRejectWithRejectedPromise()
+    public function testRejectShouldRejectWithRejectedPromise()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -63,8 +60,7 @@ trait RejectTestTrait
         $adapter->reject(Promise\reject(1));
     }
 
-    /** @test */
-    public function rejectShouldForwardReasonWhenCallbackIsNull()
+    public function testRejectShouldForwardReasonWhenCallbackIsNull()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -86,8 +82,7 @@ trait RejectTestTrait
         $adapter->reject(1);
     }
 
-    /** @test */
-    public function rejectShouldMakePromiseImmutable()
+    public function testRejectShouldMakePromiseImmutable()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -112,8 +107,7 @@ trait RejectTestTrait
         $adapter->reject(2);
     }
 
-    /** @test */
-    public function notifyShouldInvokeOtherwiseHandler()
+    public function testNotifyShouldInvokeOtherwiseHandler()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -129,8 +123,7 @@ trait RejectTestTrait
         $adapter->reject(1);
     }
 
-    /** @test */
-    public function doneShouldInvokeRejectionHandler()
+    public function testDoneShouldInvokeRejectionHandler()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -144,8 +137,7 @@ trait RejectTestTrait
         $adapter->reject(1);
     }
 
-    /** @test */
-    public function doneShouldThrowExceptionThrownByRejectionHandler()
+    public function testDoneShouldThrowExceptionThrownByRejectionHandler()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -157,8 +149,7 @@ trait RejectTestTrait
         $adapter->reject(1);
     }
 
-    /** @test */
-    public function doneShouldThrowUnhandledRejectionExceptionWhenRejectedWithNonException()
+    public function testDoneShouldThrowUnhandledRejectionExceptionWhenRejectedWithNonException()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -168,8 +159,7 @@ trait RejectTestTrait
         $adapter->reject(1);
     }
 
-    /** @test */
-    public function doneShouldThrowUnhandledRejectionExceptionWhenRejectionHandlerRejects()
+    public function testDoneShouldThrowUnhandledRejectionExceptionWhenRejectionHandlerRejects()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -181,8 +171,7 @@ trait RejectTestTrait
         $adapter->reject(1);
     }
 
-    /** @test */
-    public function doneShouldThrowRejectionExceptionWhenRejectionHandlerRejectsWithException()
+    public function testDoneShouldThrowRejectionExceptionWhenRejectionHandlerRejectsWithException()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -194,8 +183,7 @@ trait RejectTestTrait
         $adapter->reject(1);
     }
 
-    /** @test */
-    public function doneShouldThrowUnhandledRejectionExceptionWhenRejectionHandlerRetunsPendingPromiseWhichRejectsLater()
+    public function testDoneShouldThrowUnhandledRejectionExceptionWhenRejectionHandlerRetunsPendingPromiseWhichRejectsLater()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -211,8 +199,7 @@ trait RejectTestTrait
         $d->reject(1);
     }
 
-    /** @test */
-    public function doneShouldThrowExceptionProvidedAsRejectionValue()
+    public function testDoneShouldThrowExceptionProvidedAsRejectionValue()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -222,8 +209,7 @@ trait RejectTestTrait
         $adapter->reject(new \Exception('UnhandledRejectionException'));
     }
 
-    /** @test */
-    public function doneShouldThrowWithDeepNestingPromiseChains()
+    public function testDoneShouldThrowWithDeepNestingPromiseChains()
     {
         $this->setExpectedException('\Exception', 'UnhandledRejectionException');
 
@@ -247,8 +233,7 @@ trait RejectTestTrait
         $d->resolve();
     }
 
-    /** @test */
-    public function doneShouldRecoverWhenRejectionHandlerCatchesException()
+    public function testDoneShouldRecoverWhenRejectionHandlerCatchesException()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -258,8 +243,7 @@ trait RejectTestTrait
         $adapter->reject(new \Exception('UnhandledRejectionException'));
     }
 
-    /** @test */
-    public function alwaysShouldNotSuppressRejection()
+    public function testAlwaysShouldNotSuppressRejection()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -278,8 +262,7 @@ trait RejectTestTrait
         $adapter->reject($exception);
     }
 
-    /** @test */
-    public function alwaysShouldNotSuppressRejectionWhenHandlerReturnsANonPromise()
+    public function testAlwaysShouldNotSuppressRejectionWhenHandlerReturnsANonPromise()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -300,8 +283,7 @@ trait RejectTestTrait
         $adapter->reject($exception);
     }
 
-    /** @test */
-    public function alwaysShouldNotSuppressRejectionWhenHandlerReturnsAPromise()
+    public function testAlwaysShouldNotSuppressRejectionWhenHandlerReturnsAPromise()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -322,8 +304,7 @@ trait RejectTestTrait
         $adapter->reject($exception);
     }
 
-    /** @test */
-    public function alwaysShouldRejectWhenHandlerThrowsForRejection()
+    public function testAlwaysShouldRejectWhenHandlerThrowsForRejection()
     {
         $adapter = $this->getPromiseTestAdapter();
 
@@ -344,8 +325,7 @@ trait RejectTestTrait
         $adapter->reject($exception);
     }
 
-    /** @test */
-    public function alwaysShouldRejectWhenHandlerRejectsForRejection()
+    public function testAlwaysShouldRejectWhenHandlerRejectsForRejection()
     {
         $adapter = $this->getPromiseTestAdapter();
 
