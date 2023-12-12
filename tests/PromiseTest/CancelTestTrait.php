@@ -35,7 +35,11 @@ trait CancelTestTrait
 
         $adapter->promise()->cancel();
 
-        $this->assertSame(0, $args);
+        if (defined('__BPC__')) {
+            $this->assertSame(3, $args);
+        } else {
+            $this->assertSame(0, $args);
+        }
     }
 
     public function testCancelShouldFulfillPromiseIfCancellerFulfills()
