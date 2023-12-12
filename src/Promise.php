@@ -74,10 +74,6 @@ class Promise implements ExtendedPromiseInterface, CancellablePromiseInterface
     public function otherwise(callable $onRejected)
     {
         return $this->then(null, static function ($reason) use ($onRejected) {
-            if (!_checkTypehint($onRejected, $reason)) {
-                return new RejectedPromise($reason);
-            }
-
             return $onRejected($reason);
         });
     }
@@ -196,6 +192,10 @@ class Promise implements ExtendedPromiseInterface, CancellablePromiseInterface
         $callback = $cb;
         $cb = null;
 
+        if (defined('__BPC__')) {
+            $args = bpc_is_callable_num_args($cb);
+            $args = $args['max'];
+        } else {
         // Use reflection to inspect number of arguments expected by this callback.
         // We did some careful benchmarking here: Using reflection to avoid unneeded
         // function arguments is actually faster than blindly passing them.
@@ -209,6 +209,7 @@ class Promise implements ExtendedPromiseInterface, CancellablePromiseInterface
             $ref = new \ReflectionFunction($callback);
         }
         $args = $ref->getNumberOfParameters();
+        }
 
         try {
             if ($args === 0) {
@@ -222,7 +223,7 @@ class Promise implements ExtendedPromiseInterface, CancellablePromiseInterface
                 // garbage cycles if any callback creates an Exception.
                 // These assumptions are covered by the test suite, so if you ever feel like
                 // refactoring this, go ahead, any alternative suggestions are welcome!
-                $target =& $this;
+                $target = $this;
                 $progressHandlers =& $this->progressHandlers;
 
                 $callback(

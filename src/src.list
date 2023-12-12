@@ -1,0 +1,15 @@
+autoload.php
+CancellablePromiseInterface.php
+CancellationQueue.php
+Deferred.php
+ExtendedPromiseInterface.php
+FulfilledPromise.php
+functions_include.php
+functions.php
+LazyPromise.php
+PromiseInterface.php
+Promise.php
+PromisorInterface.php
+RejectedPromise.php
+UnhandledRejectionException.php
+Exception/LengthException.php
