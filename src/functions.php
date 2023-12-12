@@ -77,7 +77,7 @@ function reject($promiseOrValue = null)
  */
 function all($promisesOrValues)
 {
-    return map($promisesOrValues, function ($val) {
+    return namespace\map($promisesOrValues, function ($val) {
         return $val;
     });
 }
@@ -131,7 +131,7 @@ function race($promisesOrValues)
  */
 function any($promisesOrValues)
 {
-    return some($promisesOrValues, 1)
+    return namespace\some($promisesOrValues, 1)
         ->then(function ($val) {
             return \array_shift($val);
         });

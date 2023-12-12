@@ -2,6 +2,8 @@
 
 namespace React\Promise;
 
+use function React\Promise\resolve;
+
 /**
  * @deprecated 2.8.0 External usage of FulfilledPromise is deprecated, use `resolve()` instead.
  */

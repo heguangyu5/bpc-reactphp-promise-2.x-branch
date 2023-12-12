@@ -2,6 +2,8 @@
 
 namespace React\Promise;
 
+use function React\Promise\resolve;
+
 /**
  * @deprecated 2.8.0 LazyPromise is deprecated and should not be used anymore.
  */
