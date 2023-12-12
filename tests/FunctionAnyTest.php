@@ -4,6 +4,11 @@ namespace React\Promise;
 
 use React\Promise\Exception\LengthException;
 
+use function React\Promise\any;
+use function React\Promise\some;
+use function React\Promise\resolve;
+use function React\Promise\reject;
+
 class FunctionAnyTest extends TestCase
 {
     public function testShouldRejectWithLengthExceptionWithEmptyInputArray()

@@ -2,6 +2,10 @@
 
 namespace React\Promise;
 
+use function React\Promise\map;
+use function React\Promise\resolve;
+use function React\Promise\reject;
+
 class FunctionMapTest extends TestCase
 {
     protected function mapper()

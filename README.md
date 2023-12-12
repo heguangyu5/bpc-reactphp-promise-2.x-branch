@@ -1,3 +1,20 @@
+# BPC Notes 1: How to make?
+
+```shell
+cd src/
+make libreact-promise.so && sudo make install-libreact-promise
+sudo ldconfig
+```
+
+# BPC Notes 2: How to run test?
+
+```
+cd tests/
+phpunit-bpc --bootstrap=autoload.php --bpc=. .
+make
+./test --bootstrap=autoload.php
+```
+
 Promise
 =======
 

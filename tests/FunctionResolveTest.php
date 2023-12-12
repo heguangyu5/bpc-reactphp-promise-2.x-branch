@@ -2,6 +2,8 @@
 
 namespace React\Promise;
 
+use function React\Promise\resolve;
+
 class FunctionResolveTest extends TestCase
 {
     public function testShouldResolveAnImmediateValue()

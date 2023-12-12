@@ -2,6 +2,10 @@
 
 namespace React\Promise;
 
+use function React\Promise\race;
+use function React\Promise\resolve;
+use function React\Promise\reject;
+
 class FunctionRaceTest extends TestCase
 {
     public function testShouldResolveEmptyInput()

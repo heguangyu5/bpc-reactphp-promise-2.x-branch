@@ -2,6 +2,8 @@
 
 namespace React\Promise;
 
+use function React\Promise\reject;
+
 class FunctionRejectTest extends TestCase
 {
     public function testShouldRejectAnImmediateValue()

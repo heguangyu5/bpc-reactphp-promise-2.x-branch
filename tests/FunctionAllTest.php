@@ -2,6 +2,10 @@
 
 namespace React\Promise;
 
+use function React\Promise\all;
+use function React\Promise\resolve;
+use function React\Promise\reject;
+
 class FunctionAllTest extends TestCase
 {
     public function testShouldResolveEmptyInput()
