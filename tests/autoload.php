@@ -4,11 +4,6 @@ if (defined('__BPC__')) {
 
     require 'React/Promise/autoload.php';
     spl_autoload_register(function ($class) {
-        $path = str_replace('\\', '/', $class) . '.php';
-        if (include_silent($path)) {
-            return;
-        }
-
         if (strpos($class, 'React\\Promise\\') !== 0) {
             return;
         }
